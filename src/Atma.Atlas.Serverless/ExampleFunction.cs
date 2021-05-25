@@ -1,41 +1,27 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
+using System.Net;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace Atma.Atlas
 {
-    public class ExampleFunction
+    public static class Function1
     {
-        private readonly ILogger _logger;
-
-        public ExampleFunction(ILogger<ExampleFunction> logger)
+        [Function("Function1")]
+        public static HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequestData req, FunctionContext executionContext)
         {
-            _logger = logger;
-        }
+            var logger = executionContext.GetLogger("FunctionApp.Function1");
 
-        [FunctionName("Example")]
-        public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req)
-        {
-            _logger.LogInformation("C# HTTP trigger function processed a request.");
+            logger.LogInformation("message logged");
 
-            string name = req.Query["name"];
+            var response = req.CreateResponse(HttpStatusCode.OK);
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
+            response.Headers.Add("Date", "Mon, 18 Jul 2016 16:06:00 GMT");
+            response.Headers.Add("Content", "Content - Type: text / html; charset = utf - 8");
 
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
+            response.WriteString("Welcome to .NET 5!!");
 
-            return new OkObjectResult(responseMessage);
+            return response;
         }
     }
 }

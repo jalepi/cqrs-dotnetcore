@@ -1,0 +1,60 @@
+﻿using System.Net;
+using System.Threading.Tasks;
+using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+namespace Atma.Atlas.Serverless
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            // #if DEBUG
+            //          Debugger.Launch();
+            // #endif
+            //<docsnippet_startup>
+            var host = new HostBuilder()
+                //<docsnippet_configure_defaults>
+                .ConfigureFunctionsWorkerDefaults()
+                //</docsnippet_configure_defaults>
+                //<docsnippet_dependency_injection>
+                .ConfigureServices(s =>
+                {
+                    s.AddSingleton<IHttpResponderService, DefaultHttpResponderService>();
+                })
+                //</docsnippet_dependency_injection>
+                .Build();
+            //</docsnippet_startup>
+
+            //<docsnippet_host_run>
+            await host.RunAsync();
+            //</docsnippet_host_run>
+        }
+    }
+
+    public interface IHttpResponderService
+    {
+        HttpResponseData ProcessRequest(HttpRequestData httpRequest);
+    }
+
+    public class DefaultHttpResponderService : IHttpResponderService
+    {
+        public DefaultHttpResponderService()
+        {
+
+        }
+
+        public HttpResponseData ProcessRequest(HttpRequestData httpRequest)
+        {
+            var response = httpRequest.CreateResponse(HttpStatusCode.OK);
+
+            response.Headers.Add("Date", "Mon, 18 Jul 2016 16:06:00 GMT");
+            response.Headers.Add("Content", "Content - Type: text / html; charset = utf - 8");
+
+            response.WriteString("Welcome to .NET 5!!");
+
+            return response;
+        }
+    }
+}

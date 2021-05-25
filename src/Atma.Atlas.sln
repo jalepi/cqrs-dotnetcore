@@ -11,13 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atma.Atlas.Domain", "Atma.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atma.Atlas.Infrastructure", "Atma.Atlas.Infrastructure\Atma.Atlas.Infrastructure.csproj", "{061550F9-D3A2-4FCB-AFD0-AE069B047A19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atma.Atlas.Domain.Tests", "Atma.Atlas.Domain.Tests\Atma.Atlas.Domain.Tests.csproj", "{917FAEF8-5CA2-4686-92E1-DCFBB4FAD554}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atma.Atlas.Domain.Tests", "Atma.Atlas.Domain.Tests\Atma.Atlas.Domain.Tests.csproj", "{917FAEF8-5CA2-4686-92E1-DCFBB4FAD554}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atma.Atlas.Application.Tests", "Atma.Atlas.Application.Tests\Atma.Atlas.Application.Tests.csproj", "{937D75BD-3E44-40AE-9ACC-AD6CC3422CF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atma.Atlas.Application.Tests", "Atma.Atlas.Application.Tests\Atma.Atlas.Application.Tests.csproj", "{937D75BD-3E44-40AE-9ACC-AD6CC3422CF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atma.Atlas.Infrastructure.Tests", "Atma.Atlas.Infrastructure.Tests\Atma.Atlas.Infrastructure.Tests.csproj", "{0D7847A8-826B-4F1E-96F7-5AB44A8E9C1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atma.Atlas.Infrastructure.Tests", "Atma.Atlas.Infrastructure.Tests\Atma.Atlas.Infrastructure.Tests.csproj", "{0D7847A8-826B-4F1E-96F7-5AB44A8E9C1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atma.Atlas.Serverless.Tests", "Atma.Atlas.Serverless.Tests\Atma.Atlas.Serverless.Tests.csproj", "{BAD3194C-7AE0-4D30-A6A3-47FEC9321D76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atma.Atlas.Serverless.Tests", "Atma.Atlas.Serverless.Tests\Atma.Atlas.Serverless.Tests.csproj", "{BAD3194C-7AE0-4D30-A6A3-47FEC9321D76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
